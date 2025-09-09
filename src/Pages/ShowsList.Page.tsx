@@ -25,7 +25,7 @@ const ShowListPage : FC<ShowListPageProps> =({shows,queryChange,query,loading})=
     <div className="mt-2">
       <div className=" flex items-center justify-center">
         <div className="w-[90%] mt-10"><SearchBar value={query} onChange={(event)=>{queryChange(event.target.value)}} /></div>
-        {loading && <LoadingSpinner className="text-2xl"/>}
+        {loading && <LoadingSpinner className="mt-10 text-2xl"/>}
       </div>
       {query.length==0 && <UIcomponent/>}
     
