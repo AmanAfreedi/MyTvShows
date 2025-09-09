@@ -24,7 +24,7 @@ export const showReducer = (state :showState= initialState , action : myAction)=
            return {...state,loading:false, shows : {...state.shows ,...NormalizedData.entities.shows},query_show :{...state.query_show,[state.query]:[...NormalizedData.result]}}
         }
         if(action.type==QUERY_CHANGE_ACTION){
-            return {...state , query : action.payload!.query, loading :true}
+            return {...state , query : action.payload?.query ?? "", loading :true}
         }
         if(action.type==SHOWS_DETAILS_LOADED){
             const show:any = action.payload 

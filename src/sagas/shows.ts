@@ -1,5 +1,6 @@
 import { LOAD_SHOW_DETAILS, QUERY_CHANGE_ACTION, showDetailsLoaded, ShowLoadedAction, SHOWS_LOADED } from "../actions/shows";
 import { FetchShow, FetchShows } from "../APIs/api";
+import { Show } from "../models/Show";
 import { myAction } from "../reducers/store";
 import { call, debounce, put, takeEvery, takeLatest, takeLeading, takeMaybe } from 'redux-saga/effects'
 export function* rootSaga(){
@@ -9,9 +10,9 @@ export function* rootSaga(){
 
 function* getShows(action : myAction): Generator{
     const shows = yield call(FetchShows,action.payload?.query as string)
-    yield put(ShowLoadedAction(shows))
+    yield put(ShowLoadedAction(shows as Show[]))
 }
 function* getShow(action : any): Generator{
     const show = yield call(FetchShow,action.payload as number)
-    yield put(showDetailsLoaded(show));
+    yield put(showDetailsLoaded(show as Show));
 }

@@ -11,7 +11,7 @@ export const showMapSelector = createSelector(showStateSelector,(state)=> state.
 export const queryMapSelector = createSelector(showStateSelector,(state)=>state.query_show);
 export const showsSelector = createSelector(
   [queryMapSelector, querySelector, showMapSelector],
-  (queryMap, query, showMap) => queryMap[query]?.map((id) => showMap[id]) 
+  (queryMap, query, showMap) => queryMap[query]?.map((id) => showMap[id] ) 
 );
 export const LoadingSelector = createSelector(showStateSelector,(state)=>state.loading)
 
