@@ -7,7 +7,7 @@ import { call, debounce, put, takeEvery, } from 'redux-saga/effects'
 import { queryChangeAction, showDetailsLoaded, ShowLoadedAction } from "../slices/shows";
 export function* rootSaga(){
     yield debounce(100,queryChangeAction, getShows)
-    yield takeEvery(showDetailsLoaded,getShow)
+    yield takeEvery(LOAD_SHOW_DETAILS,getShow)
     yield takeEvery(LOAD_CAST_DETAILS,getCast)
 }
 

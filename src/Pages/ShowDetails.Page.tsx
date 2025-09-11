@@ -25,6 +25,7 @@ type ShowDetailPageProps = {
 const ShowDetailPage: FC<ShowDetailPageProps> = ({ params, castLoading, shows, loadShow, loadCast, cast }) => {
   
   useEffect(() => {
+    console.log("useeffect")
     loadShow(+params.show_id)
     loadCast(+params.show_id)
   }, [params])

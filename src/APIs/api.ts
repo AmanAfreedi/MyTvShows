@@ -21,7 +21,8 @@ export const FetchCast = (id : number)=>{
 }
 export const FetchShow = async (id : number)=>{
       const show = await axios.get(" https://api.tvmaze.com/shows/"+id)
+      console.log("api",show.data)
       
-       return show;
+       return show.data;
     
 }
