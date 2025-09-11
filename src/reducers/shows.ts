@@ -18,7 +18,7 @@ const initialState:showState = {
 }
 export const showReducer = (state :showState= initialState , action : myAction)=>{
         if(action.type==SHOWS_LOADED){
-           const shows = action.payload!.shows as Show[];
+           const shows = action.payload as Show[];
            const showSchema = new schema.Entity("shows")
            const NormalizedData = normalize(shows , [showSchema])
            return {...state,loading:false, shows : {...state.shows ,...NormalizedData.entities.shows},query_show :{...state.query_show,[state.query]:[...NormalizedData.result]}}

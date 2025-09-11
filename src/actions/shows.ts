@@ -1,18 +1,19 @@
 
+import { Cast } from "../models/cast";
 import { Show } from "../models/Show";
 
 export const SHOWS_LOADED = "ShowLoadedAction";
 export const ShowLoadedAction = (shows : Show[] )=>{
     return{
         type:SHOWS_LOADED,
-        payload:{shows }
+        payload:shows
     }
 }
  export const QUERY_CHANGE_ACTION = "QueryChangeAction";
  export const queryChangeAction = (query : string)=>{
     return {
         type:QUERY_CHANGE_ACTION,
-        payload : {query : query}
+        payload : query
     }
  }
 
@@ -31,3 +32,17 @@ export const loadShowDetails = (showId : number)=>{
         payload : showId,
     }
  }
+ export const LOAD_CAST_DETAILS="LOAD_CAST_DETAILS"
+ export const loadCastDetails = (showId : number)=>{
+    return {
+        type : LOAD_CAST_DETAILS,
+        payload : showId,
+    }
+}
+export const CAST_DETAILS_LOADED="CAST_DETAILS_LOADED";
+export const castDetailsLoaded = (cast : any)=>{
+    return {
+        type : CAST_DETAILS_LOADED,
+        payload : cast,
+    }
+}
