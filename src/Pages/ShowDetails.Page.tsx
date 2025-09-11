@@ -58,7 +58,7 @@ const ShowDetailPage: FC<ShowDetailPageProps> = ({ params, castLoading, shows, l
           {/* Left - Image */}
           <div className="lg:col-span-1">
             <img
-              src={show.image?.medium || notAvialable}
+              src={show.image?.original || notAvialable}
               alt={show.name}
               className="w-full rounded-lg shadow-lg object-cover"
             />
