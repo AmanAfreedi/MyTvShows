@@ -1,4 +1,4 @@
-import { FC, useEffect} from "react";
+import { FC, useEffect, useState} from "react";
 import CastCard from "../Components/CastCard";
 import GenrePill from "../Components/GenrePill";
 import withRouter, { WithRouterProps } from "../hocs/withRouter";
@@ -22,7 +22,16 @@ type ShowDetailPageProps = {
 } & WithRouterProps;
 
 const ShowDetailPage: FC<ShowDetailPageProps> = ({ params, castLoading, shows, loadShow, loadCast, cast }) => {
-  
+   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // hide spinner after 1 second
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer); // cleanup
+  }, []);
   useEffect(() => {
     console.log("useeffect")
     loadShow(+params.show_id)
@@ -142,7 +151,7 @@ const ShowDetailPage: FC<ShowDetailPageProps> = ({ params, castLoading, shows, l
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Cast</h2>
             
-            {castLoading ? (
+            {loading ? (
               <div className="flex justify-center py-8">
                 <LoadingSpinner />
               </div>
