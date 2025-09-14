@@ -5,6 +5,7 @@ import { Show } from "../models/Show";
 import { myAction } from "../reducers/store";
 import { call, debounce, put, takeEvery, } from 'redux-saga/effects'
 import { queryChangeAction, showDetailsLoaded, ShowLoadedAction } from "../slices/shows";
+import { castLoadedAction } from "../slices/cast";
 export function* rootSaga(){
     yield debounce(100,queryChangeAction, getShows)
     yield takeEvery(LOAD_SHOW_DETAILS,getShow)
@@ -22,5 +23,5 @@ export function* getShow(action : any): Generator{
 }
 export function* getCast( action : any):Generator{
     const cast = yield call(FetchCast,action.payload as number);
-    yield put (castDetailsLoaded(cast));
+    yield put (castLoadedAction(cast));
 }

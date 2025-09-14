@@ -1,16 +1,15 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect} from "react";
 import CastCard from "../Components/CastCard";
 import GenrePill from "../Components/GenrePill";
 import withRouter, { WithRouterProps } from "../hocs/withRouter";
 import { MdArrowBack } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { showMapSelector, showsSelector } from "../selectors/shows";
+import { showMapSelector} from "../selectors/shows";
 import { State } from "../reducers/store";
 import { Show } from "../models/Show";
 import { connect } from "react-redux";
 import { loadCastDetails, loadShowDetails } from "../actions/shows";
 import LoadingSpinner from "../Components/LoadingSpinner";
-import { FetchCast } from "../APIs/api";
 import { castLoadingSelector, castSelector } from "../selectors/cast";
 import { notAvialable } from "../Components/ShowCard";
 
@@ -59,7 +58,7 @@ const ShowDetailPage: FC<ShowDetailPageProps> = ({ params, castLoading, shows, l
           {/* Left - Image */}
           <div className="lg:col-span-1">
             <img
-              src={show.image?.original || notAvialable}
+              src={show.image?.medium || notAvialable}
               alt={show.name}
               className="w-full rounded-lg shadow-lg object-cover"
             />
